@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Js Training Day 1</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <!--Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!--Vue js Script file-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!--id which is called by vue js instances.-->
+      <!--v-on:mousemove event. we use it for locating position.-->
+      <div v-on:mousemove="tooltipHandler" id="id1">
+        <div>Location X-{{x}} Y-{{y}}</div>
+        <div class="row p-2">
+          <!--First card-->
+          <div class="card m-3" style="width: 18rem">
+            <div :style="{backgroundColor:color}" class="card-body">
+              <p class="card-text">
+                <!--Interpolation {{}} is used for binding dynamic data-->
+
+                Your color name is=<i class="text-uppercase"
+                  ><b>{{color}}</b></i
+                >
+              </p>
+              <h5 class="card-title">
+                ColorName:<input
+                  type="text"
+                  v-model="color"
+                  autocomplete="off"
+                />
+                <!-- v-model directive used for binding input field it is equal to id and value... It is known two way data binding-->
+              </h5>
+            </div>
+          </div>
+
+          <!--Second card-->
+          <div class="card m-3" style="width: 18rem">
+            <div class="card-body">
+              <p class="card-text">You Click Me <b>{{count}}</b> times</p>
+              <h5 class="card-title">
+                <!--v-on:click or @click(sorthand) is used for event binding functions declare on script tag under methods property -->
+                Step:<input
+                  type="text"
+                  name="step"
+                  v-model="step"
+                  autocomplete="off"
+                />
+                <button @click="clickHandle(step)">Click Me</button>
+              </h5>
+            </div>
+          </div>
+
+          <!--Third card-->
+          <div class="card m-3" style="width: 18rem">
+            <div class="card-body">
+              <p class="card-text">You can reset values here</p>
+              <h5 class="card-title">
+                <button @click="resetHandle">Reset</button>
+              </h5>
+              <p class="card-text">Want to search something...</p>
+
+              <!--For binding attributes of any tag we use v-bind:attr_name directive-->
+              <p>click here- <a v-bind:href="link">Google</a></p>
+              <p>Follow me here-</p>
+              <!--v-html used for rendering data written in html tag in script file-->
+              <p v-html="facebook_link"></p>
+            </div>
+          </div>
+
+          <!--Fourth card-->
+          <div class="card m-3" style="width: 18rem">
+            <div class="card-body">
+              <p class="card-text">Want to play game</p>
+              <h5 class="card-title">
+                <a class="btn btn-success" href="game.html"> Play </a>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--call vue js instance for dynamic rendering...-->
+    <script src="/script/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.welcome {
+  height: 40px;
+}
+.player-turn {
+  background-color: lightpink;
+}
+.monster-turn {
+  background-color: lightseagreen;
+}
+li {
+  list-style-type: none;
+  margin: 7px;
+}

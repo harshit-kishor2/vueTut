@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Start Your Game</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <!--Vue js Script file-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="game">
+        <div class="container">
+            <div class="text-white bg-info text-center welcome"><h3>Welcome</h3></div>
+            <div class="row justify-content-around mt-5">
+
+                <div class="col-4 text-center">
+                    <h2>You</h2>
+                    <div class="progress" style="height: 40px">
+                        <div :class="{'bg-danger':playerHealth<15}" class="progress-bar bg-success" role="progressbar" :style="{width: playerHealth+'%'}" aria-valuenow="15"
+                            aria-valuemin="0" aria-valuemax="100">{{playerHealth}}</div>
+                    </div>
+                </div>
+                <div class="col-4 text-center">
+                    <h2>Monster</h2>
+                    <div class="progress" style="height: 40px">
+                        <div :class="{'bg-danger':monsterHealth<15}" class="progress-bar bg-success" role="progressbar" :style="{width: monsterHealth+'%'}" aria-valuenow="15"
+                            aria-valuemin="0" aria-valuemax="100">{{monsterHealth}}</div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- menu item panel...-->
+            <div class="row justify-content-around m-5">
+                <div class="card" style="width: 40rem;">
+                    <div class="card-body text-center" v-if="!gameIsRunning">
+                        <button @click="startGame" class="btn btn-primary">Start New Game</button>
+                    </div>
+                     <div class="card-body text-center" v-else>
+                        <button @click="attack" class="btn btn-danger m-2">Attack</button>
+                        <button @click="specialAttack" class="btn btn-info m-2">Special Attack</button>
+                        <button @click="heal" class="btn btn-success m-2">Heal</button>
+                        <button @click="giveUp" class="btn btn-warning m-2">Give Up</button>
+                    </div>
+
+                </div>
+            </div>
+<!-- Attack log panel...-->
+            <div v-if="turns.length>0"  class="row justify-content-around">
+                <div class="card bg-light" style="width: 50rem;">
+                    <div class="card-body text-center">
+                        <ul>
+                            <li v-for="turn in turns" :class="{'player-turn':turn.isplayer,'monster-turn':!turn.isplayer}">
+                                {{turn.text}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <script src="/script/game.js"></script>
+</body>
+
+</html>
