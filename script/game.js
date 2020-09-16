@@ -3,6 +3,8 @@ dataobj = {
   monsterHealth: 100,
   gameIsRunning: false,
   turns: [],
+  healtab: false,
+  SpecialAttacktab: false,
 };
 var app = new Vue({
   el: "#game",
@@ -14,6 +16,8 @@ var app = new Vue({
       this.monsterHealth = 100;
       this.show = false;
       this.turns = [];
+      this.healtab = false;
+      this.SpecialAttacktab = false;
     },
     attack: function () {
       var damage = this.calculateDamage(10, 3);
@@ -64,6 +68,7 @@ var app = new Vue({
         text: "Monster hits player for " + damage,
       });
       this.checkResult();
+      this.SpecialAttacktab = true;
     },
     heal: function () {
       if (this.playerHealth <= 90) {
@@ -81,6 +86,7 @@ var app = new Vue({
         isplayer: false,
         text: "Monster hits player for " + damage,
       });
+      this.healtab = true;
     },
     giveUp: function () {
       if (confirm("You Lost! Start game Again?")) {

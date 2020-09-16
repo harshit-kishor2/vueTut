@@ -43,8 +43,8 @@
                     </div>
                      <div class="card-body text-center" v-else>
                         <button @click="attack" class="btn btn-danger m-2">Attack</button>
-                        <button @click="specialAttack" class="btn btn-info m-2">Special Attack</button>
-                        <button @click="heal" class="btn btn-success m-2">Heal</button>
+                        <button @click="specialAttack" class="btn btn-info m-2" :disabled="SpecialAttacktab">Special Attack</button>
+                        <button @click="heal" class="btn btn-success m-2" :disabled="healtab">Heal</button>
                         <button @click="giveUp" class="btn btn-warning m-2">Give Up</button>
                     </div>
 
